@@ -17,6 +17,7 @@ internals.renderReactApp = (request, reply) => {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta charset="utf-8">
+        <link rel="manifest" href="/dist/public/manifest.json">
       </head>
       <body>
         <div id="root">${html}</div>

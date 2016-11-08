@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node build/devServer.js",
-    "build": "npm run clean && webpack -p && cp -R ./server ./dist/server && cp ./app.js ./dist/app.js && cp -R ./client ./dist/client && sw-precache --root='dist/public/' --static-file-globs='dist/**/!(*map*)'",
+    "copy": "cp -R ./server ./dist/server && cp ./app.js ./dist/app.js && cp -R ./client ./dist/client",
+    "build": "npm run clean && webpack -p && npm run copy && sw-precache --root='dist/public/' --static-file-globs='dist/**/!(*map*)'",
     "clean": "rm -rf dist"
   },
   "repository": {
@@ -42,7 +43,6 @@
     "eslint-plugin-react": "^6.6.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "sw-precache": "^4.2.1",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.1"
   }
