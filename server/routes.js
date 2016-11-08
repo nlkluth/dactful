@@ -44,10 +44,10 @@ export default (server) => {
     }
   }, {
     method: 'GET',
-    path: '/sw.js',
+    path: '/service-worker.js',
     handler: {
-      file: (request) => {
-        return path.join(__dirname, '../public/sw.js');
+      file: () => {
+        return path.join(__dirname, '../public/service-worker.js');
       }
     }
   }]);
