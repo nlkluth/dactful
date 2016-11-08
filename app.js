@@ -2,6 +2,10 @@ require('babel-core/register')({
   presets: ['es2015', 'react', 'stage-0']
 });
 
+global.__CLIENT__ = false;
+global.__SERVER__ = true;
+global.__DEV__ = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging';
+
 const Hapi = require('hapi');
 const config = require('./server/config/config');
 

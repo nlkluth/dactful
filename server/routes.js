@@ -42,5 +42,13 @@ export default (server) => {
         return path.join(__dirname, '../public', request.params.filename);
       }
     }
+  }, {
+    method: 'GET',
+    path: '/sw.js',
+    handler: {
+      file: (request) => {
+        return path.join(__dirname, '../public/sw.js');
+      }
+    }
   }]);
 };
