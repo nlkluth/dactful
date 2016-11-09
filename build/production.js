@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CommonChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
 import webpackConfig from './_base';
 
 webpackConfig.module.loaders = webpackConfig.module.loaders.map((loader) => {
@@ -14,6 +15,10 @@ webpackConfig.module.loaders = webpackConfig.module.loaders.map((loader) => {
 });
 
 webpackConfig.output.filename = '[name].[hash].js';
+webpackConfig.entry.vendor = [
+  'react',
+  'react-dom'
+];
 webpackConfig.plugins.push(
   new ExtractTextPlugin('[name].[hash].css'),
   new webpack.DefinePlugin({
@@ -32,6 +37,9 @@ webpackConfig.plugins.push(
       dead_code: true,
       warnings: false
     }
+  }),
+  new CommonChunkPlugin({
+    name: 'common'
   })
 );
 

@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 require('babel-core/register');
-const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const config = require('../build/development_hot').default;
@@ -15,10 +14,6 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../src/index.html'));
-});
 
 app.listen(3344, 'localhost', (err) => {
   if (err) {
