@@ -8,7 +8,7 @@ if (__CLIENT__) {
 
 const Root = ({ children }) => (
   <div>
-    <Link to="about">about</Link>
+    <Link to="/about">about</Link>
     {children}
   </div>
 );

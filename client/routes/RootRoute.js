@@ -9,16 +9,17 @@ if (typeof require.ensure !== 'function') {
 }
 
 export default {
-  pathname: '/',
+  path: '/',
   component: Root,
-  indexRoute: {
-    component: Listing
-  },
   getChildRoutes(partialNextState, callback) {
     require.ensure([], (require) => {
+      console.log('requiring');
       callback(null, [
         require('./About')
       ]);
     });
+  },
+  indexRoute: {
+    component: Listing
   }
 };

@@ -1,6 +1,6 @@
 import About from '../components/about/About';
 
 export default {
-  pathname: 'about',
+  path: 'about',
   component: About
 };
