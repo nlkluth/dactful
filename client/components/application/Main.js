@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './Root';
+import { Router, browserHistory } from 'react-router';
+import rootRoute from '../../routes/RootRoute';
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(
+  <Router
+    history={browserHistory}
+    routes={rootRoute}
+  />,
+  document.getElementById('root')
+);
