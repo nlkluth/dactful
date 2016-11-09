@@ -13,9 +13,8 @@ export default {
   component: Root,
   getChildRoutes(partialNextState, callback) {
     require.ensure([], (require) => {
-      console.log('requiring');
       callback(null, [
-        require('./About')
+        require('./About').default
       ]);
     });
   },
