@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
 import serviceWorker from '../../utils/serviceWorker';
+import Navigation from './Navigation';
 
 if (__CLIENT__) {
   serviceWorker();
@@ -8,7 +8,7 @@ if (__CLIENT__) {
 
 const Root = ({ children }) => (
   <div>
-    <Link to="/about">about</Link>
+    <Navigation />
     {children}
   </div>
 );

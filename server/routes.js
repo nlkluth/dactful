@@ -11,7 +11,7 @@ const findFiles = (name, files) => files.find((item) => path.extname(item) === '
 
 const showScript = (files) => {
   if (__DEV__) {
-    return 'http://localhost:3344/dist/public/bundle.js';
+    return '<script src="http://localhost:3344/dist/public/bundle.js"></script>';
   }
 
   const app = findFiles('app', files);
@@ -37,7 +37,7 @@ const renderFullPage = (html, callback) => {
           <meta charset="utf-8">
           <link rel="manifest" href="/dist/public/manifest.json">
         </head>
-        <body>
+        <body style="margin:0;background:#effdfc">
           <div id="root">${html}</div>
           ${showScript(files)}
         </body>
