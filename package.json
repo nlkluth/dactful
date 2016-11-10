@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node build/devServer.js",
     "copy": "cp -R ./server ./dist/server && cp ./app.js ./dist/app.js && cp -R ./client ./dist/client",
-    "build": "npm run clean && webpack -p && npm run copy && sw-precache --root='dist/public/' --static-file-globs='dist/**/!(*map*)'",
+    "serviceworker": "sw-precache --root='dist/public/' --static-file-globs='dist/public/**/!(*map*)' --replacePrefix='dist/public/'",
+    "build": "npm run clean && webpack -p && npm run copy && npm run serviceworker",
     "clean": "rm -rf dist"
   },
   "repository": {
@@ -23,6 +24,7 @@
     "babel-core": "^6.18.2",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.16.0",
+    "glob": "^7.1.1",
     "hapi": "^15.2.0",
     "inert": "^4.0.2",
     "react": "^15.3.2",

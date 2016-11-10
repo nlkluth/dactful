@@ -1,26 +1,49 @@
 import React from 'react';
 import path from 'path';
+import glob from 'glob';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from '../client/routes/RootRoute';
 // import config from './server/config/config';
 const internals = {};
 
+const findFiles = (name, files) => files.find((item) => path.extname(item) === '.js' && item.includes(name));
+
+const showScript = (files) => {
+  if (__DEV__) {
+    return 'http://localhost:3344/dist/public/bundle.js';
+  }
+
+  const app = findFiles('app', files);
+  const vendor = findFiles('vendor', files);
+
+  const appPath = app.split('/');
+  const vendorPath = vendor.split('/');
+
+  return (`
+    <script src="/dist/public/${vendorPath[vendorPath.length - 1]}"></script>
+    <script src="/dist/public/${appPath[appPath.length - 1]}"></script>
+  `);
+};
+
 const renderFullPage = (html, callback) => {
-  return callback(`<!doctype html>
-    <html>
-      <head>
-        <title>dactful</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <link rel="manifest" href="/dist/public/manifest.json">
-      </head>
-      <body>
-        <div id="root">${html}</div>
-        <script src="http://localhost:3344/dist/public/bundle.js"></script>
-      </body>
-    </html>`);
+  glob(path.join(__dirname, '../public/*'), (err, files) => {
+    return callback(`<!doctype html>
+      <html>
+        <head>
+          <title>dactful</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <meta charset="utf-8">
+          <link rel="manifest" href="/dist/public/manifest.json">
+        </head>
+        <body>
+          <div id="root">${html}</div>
+          ${showScript(files)}
+        </body>
+      </html>`
+    );
+  });
 };
 
 internals.renderReactApp = (request, reply) => {

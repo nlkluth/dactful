@@ -17,7 +17,8 @@ webpackConfig.module.loaders = webpackConfig.module.loaders.map((loader) => {
 webpackConfig.output.filename = '[name].[hash].js';
 webpackConfig.entry.vendor = [
   'react',
-  'react-dom'
+  'react-dom',
+  'react-router'
 ];
 webpackConfig.plugins.push(
   new ExtractTextPlugin('[name].[hash].css'),
@@ -38,8 +39,9 @@ webpackConfig.plugins.push(
       warnings: false
     }
   }),
+  new webpack.optimize.DedupePlugin(),
   new CommonChunkPlugin({
-    name: 'common'
+    name: 'vendor'
   })
 );
 
