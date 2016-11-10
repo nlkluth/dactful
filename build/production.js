@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CommonChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
 import webpackConfig from './_base';
 
@@ -22,6 +23,15 @@ webpackConfig.entry.vendor = [
 ];
 webpackConfig.plugins.push(
   new ExtractTextPlugin('[name].[hash].css'),
+  new HtmlWebpackPlugin({
+    template: './public/index.html',
+    hash: false,
+    filename: 'index.html',
+    inject: 'body',
+    minify: {
+      collapseWhitespace: true
+    }
+  }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: '"production"'
