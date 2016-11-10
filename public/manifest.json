@@ -4,6 +4,7 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
+  "theme_color": "#fff",
   "description": "Learning paths",
   "icons": [{
     "src": "dist/publicimages/touch/homescreen48.png",
