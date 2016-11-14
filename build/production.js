@@ -23,15 +23,15 @@ webpackConfig.entry.vendor = [
 ];
 webpackConfig.plugins.push(
   new ExtractTextPlugin('[name].[hash].css'),
-  // new HtmlWebpackPlugin({
-  //   template: './public/index.html',
-  //   hash: false,
-  //   filename: 'index.html',
-  //   inject: 'body',
-  //   minify: {
-  //     collapseWhitespace: true
-  //   }
-  // }),
+  new HtmlWebpackPlugin({
+    template: './public/index.html',
+    hash: false,
+    filename: 'index.html',
+    inject: 'body',
+    minify: {
+      collapseWhitespace: true
+    }
+  }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: '"production"'
