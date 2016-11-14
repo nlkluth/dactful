@@ -79,7 +79,7 @@ export default (server) => {
     }
   }, {
     method: 'GET',
-    path: '/dist/public/{filename}',
+    path: '/dist/public/{filename*}',
     handler: {
       file: (request) => {
         return path.join(__dirname, '../public', request.params.filename);

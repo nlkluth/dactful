@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node build/devServer.js",
-    "copy": "cp -R ./server ./dist/server && cp ./app.js ./dist/app.js && cp -R ./client ./dist/client && cp ./public/manifest.json ./dist/public",
+    "copy": "cp -R ./server ./dist/server && cp ./app.js ./dist/app.js && cp -R ./client ./dist/client && cp ./public/manifest.json ./dist/public && cp -R ./public/images ./dist/public/images",
     "serviceworker": "sw-precache --root='dist/public/' --static-file-globs='dist/public/**/!(*map*)' --replacePrefix='dist/public/' --directoryIndex='dist/public/index.html'",
     "build": "npm run clean && webpack -p && npm run copy && npm run serviceworker",
     "clean": "rm -rf dist"
