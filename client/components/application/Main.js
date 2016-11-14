@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
-import rootRoute from '../../routes/RootRoute';
+import App from './App';
 
 ReactDOM.render(
-  <Router
-    history={browserHistory}
-    routes={rootRoute}
-  />,
+  <App />,
   document.getElementById('root')
 );
+
+if (module.hot) {
+  module.hot.accept();
+}
