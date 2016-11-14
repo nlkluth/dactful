@@ -1,10 +1,9 @@
 import React from 'react';
 
 const progressContainer = {
-  marginTop: '5%',
+  margin: '5% auto',
   background: '#fff',
-  width: '40%',
-  marginLeft: '5%',
+  width: '80%',
   border: '1px solid #eee',
   boxShadow: '0px 0px 4px 0px #eee',
   padding: '5%'
