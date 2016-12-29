@@ -35,6 +35,7 @@ const renderFullPage = (html, callback) => {
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <meta http-equiv="x-ua-compatible" content="ie=edge">
           <meta charset="utf-8">
+          <meta name="theme-color" content="#effdfc">
           <link rel="manifest" href="/dist/public/manifest.json">
           <link rel="shortcut icon" href="/dist/public/images/touch/favicon.ico" type="image/x-icon">
         </head>
