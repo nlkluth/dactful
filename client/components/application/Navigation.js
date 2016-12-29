@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+if (__CLIENT__) {
+  require('./Navigation.scss');
+}
+
 const style = {
   background: '#048A81',
   height: '55px',
@@ -10,9 +14,12 @@ const style = {
 const Navigation = () => (
   <div
     style={style}
+    className="navigation"
   >
     <div> dactful </div>
-    <Link to="/about"> about </Link>
+    <div className="subnav">
+      <Link to="/about"> about </Link>
+    </div>
   </div>
 );
 

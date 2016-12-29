@@ -1,16 +1,41 @@
 import React from 'react';
 import LoadingList from './LoadingList';
+import ListingView from './ListingView';
 
-const Listing = ({ list }) => {
-  if (!list) {
-    return <LoadingList />;
+class Listing extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      list: []
+    };
   }
 
-  return <p> Real list </p>;
-};
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        list: [{
+          collapsed: true,
+          tasks: [1, 2, 3]
+        }, {
+          collapsed: true,
+          tasks: [1, 2, 3]
+        }, {
+          collapsed: false,
+          tasks: [1, 2, 3]
+        }],
+        loading: false
+      });
+    }, 2000);
+  }
 
-Listing.propTypes = {
-  list: React.PropTypes.object
-};
+  render() {
+    if (!this.state.list.length && this.state.loading) {
+      return <LoadingList />;
+    }
+
+    return <ListingView list={this.state.list} />;
+  }
+}
 
 export default Listing;
